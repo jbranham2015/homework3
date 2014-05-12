@@ -1,0 +1,28 @@
+
+<% the_id = params["id"] %>
+<% books = Book.read(the_id) %>
+<% customer_reviews = Review.read("book_id" => books["id"]) %>
+
+<h2> Book: <%= books["title"] %> </h2>
+<ul>
+
+<li>
+    Price: ($<%= books["price"] %>)
+</li>
+
+<li>
+    Average Star Rating: (<%= Review.read("book_id" => books["id"]).average("rating") %>)
+</li>
+
+<li>
+    Reviews: (<% customer_reviews.each do |display| %>
+       <%= display["review"] %>
+<% end %>)
+</li>
+
+</ul>
+
+<%= image_tag "http://www.dovetailhealth.com/Portals/296744/images/Star%20Ratings.jpg" %>
+
+<p>
+   <h3> <%= link_to "Click here to go back to our complete book list", "/books/" %> </h3>

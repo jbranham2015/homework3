@@ -1,0 +1,28 @@
+
+
+<% ed_pick = Review.group("book_id").order("avg(rating) desc").first[:book_id] %>
+
+<h1>
+    <strong> <div align="center"> <font color="Indigo">Welcome to Smorgasbooks</strong>
+</h1>
+</font>
+
+<hr>
+
+    <h3> The Current Editor's Pick is:
+
+    <%= link_to "The Alchemist", "/books/79/" %> </h3>
+
+    <div align="left">   <img src="http://d.gr-assets.com/books/1287827991l/865.jpg"  width="150" height="200">
+
+<p>
+
+<li>
+    Book #(<%= link_to ed_pick, "/books/#{Book.find_by("id" => ed_pick)[:id]}"  %>) in our Catalouge
+</li>
+
+    <h3><%= link_to "Click here to see our complete book list", "/books/" %></h3>
+
+
+
+

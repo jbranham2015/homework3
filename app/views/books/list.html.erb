@@ -1,0 +1,40 @@
+
+<h1>
+    <strong> <div align="center"> <font color="Indigo">Welcome to Smorgasbooks! A Short Compilation of Barnburners For Under $40</strong>
+</h1>
+
+<p>
+    <% all_books = Book.read %>
+
+<hr>
+
+<h2> Book Titles</h2>
+
+<ul>
+    <% all_books.each do |book| %>
+       <% book_name = book["title"] %>
+     <li>
+    <strong> <%= link_to book_name, "/books/#{book["id"]}" %> </strong>
+
+        Price ($<%= book["price"] %>)
+
+        <% if Review.present? %> , Average Star Rating <%= Review.where("book_id" => book["id"]).average("rating") %>
+
+    <% end %>
+    </li>
+    <% end %>
+
+</ul>
+</p>
+
+</div>
+    <%= image_tag "http://www.dovetailhealth.com/Portals/296744/images/Star%20Ratings.jpg" %>
+</font>
+
+<br>
+<h2>
+    <div align="center"> ADDITIONAL TITLES COMING SOON
+<br>
+<br>
+    <div align="center"><img src="http://gadgets.boingboing.net/gimages/koelewijnwerk02.jpg">
+</h2>
